@@ -10,7 +10,12 @@ const HookMouse = () => {
         useEffect(()=>{
         console.log('useEffect called')
         window.addEventListener('mousemove',logMousePosition)
-    }, [])
+
+        return() => {
+            window.removeEventListener('mousemove',logMousePosition)
+        }
+    },[])
+   
     return (  
         <div>
             Hooks X - {x} Y -{y}
